@@ -41,7 +41,7 @@ final class Neo4jDataCollector extends AbstractDataCollector
                     continue;
                 }
 
-                if ('result' === $key && method_exists($value, 'getStatement')) {
+                if ('result' === $key && is_object($value) && method_exists($value, 'getStatement')) {
                     $resultSummary = $value;
                     $statementObj = $resultSummary->getStatement();
                     if (null !== $statementObj) {
